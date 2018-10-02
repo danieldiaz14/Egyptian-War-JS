@@ -1,5 +1,9 @@
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext('2d');
+const background = document.getElementById('background');
+const p1Rect = document.getElementById('p1Rect');
+const p2Rect = document.getElementById('p2Rect');
+context.font = "25px Arial";
 const cards = {
     spade: [1,2,3,4,5,6,7,8,9,10,11,12,13],
     club: [1,2,3,4,5,6,7,8,9,10,11,12,13],
@@ -32,15 +36,12 @@ const createDeck = () => {
 
 let deck = createDeck();
 let queue = [];
-
-const checkQueue = (data) => {
-    for (let i = 0; i < data.length; i++) {
-
-    }
-}
 const draw = () => {
-    context.fillStyle = "#32CD32";
-    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(background, 0, 0, canvas.width, canvas.height);
+    context.drawImage(p1Rect, 795, 0, 225, 40);
+    context.fillText(`Player2's hand:${players.player2.hand.length}`, 800, 30);
+    context.drawImage(p1Rect, 0, 600, 225,40);
+    context.fillText(`Player1's hand:${players.player1.hand.length}`, 0, 630);
     requestAnimationFrame(draw);
 }
 
